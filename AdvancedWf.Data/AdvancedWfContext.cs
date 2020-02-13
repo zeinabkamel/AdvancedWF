@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AdvancedWf.Data
 {
-    public class AdvancedWfContext :IdentityDbContext<User>
+    public class AdvancedWfContext :DbContext
     {
         public AdvancedWfContext() : base("AdvancedWfEntities") { }
 
