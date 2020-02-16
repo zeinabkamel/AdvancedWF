@@ -1,5 +1,6 @@
 ﻿using AdvancedWf.DTO;
 using AdvancedWf.Model;
+using AdvancedWf.Model.Models;
 using AutoMapper;
  
 using System;
@@ -25,6 +26,7 @@ namespace AdvancedWf.Mapping
                 .ForMember(g => g.Price, map => map.MapFrom(vm => vm.GadgetPrice))
                 .ForMember(g => g.Image, map => map.MapFrom(vm => vm.File.FileName))
                 .ForMember(g => g.CategoryID, map => map.MapFrom(vm => vm.GadgetCategory));
+            Mapper.CreateMap<WorkflowTypesDTO, WorkflowTypes>();
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BeHelpful.Entities.Common
+namespace AdvancedWf.Entities.Common
 {
     /// <inheritdoc />
     /// <summary>

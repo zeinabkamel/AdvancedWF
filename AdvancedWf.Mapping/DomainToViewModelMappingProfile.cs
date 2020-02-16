@@ -1,5 +1,6 @@
 ﻿using AdvancedWf.DTO;
 using AdvancedWf.Model;
+using AdvancedWf.Model.Models;
 using AutoMapper;
  
 using System;
@@ -21,6 +22,8 @@ namespace AdvancedWf.Mapping
         {
             Mapper.CreateMap<Category,CategoryViewModel>();
             Mapper.CreateMap<Gadget, GadgetViewModel>();
+
+            Mapper.CreateMap<WorkflowTypes, WorkflowTypesDTO>();
         }
     }
 }

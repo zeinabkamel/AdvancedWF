@@ -83,6 +83,40 @@ namespace AdvancedWf.Data.Infrastructure
         }
 
         #endregion
-    
+
+        #region Data table
+        /// <summary>
+        /// get data table items count based on viewModel EndString property
+        /// </summary>
+        /// <param name="endString">Page Length</param>
+        /// <returns>items count</returns>
+        public static int GetLength(string endString)
+        {
+            var length = 10;
+            var d = !string.IsNullOrEmpty(endString) && int.TryParse(endString, out length);
+            if (length <= 0)
+            {
+                length = 10;
+            }
+
+            return length;
+        }
+        /// <summary>
+        /// get data table start index based on StartString
+        /// </summary>
+        /// <param name="startString">Start page of dataTable</param>
+        /// <returns>start index</returns>
+        public static int GetStart(string startString)
+        {
+            int start = 0;
+            var d = !string.IsNullOrEmpty(startString) && int.TryParse(startString, out start);
+            if (start < 0)
+            {
+                start = 0;
+            }
+
+            return start;
+        }
+        #endregion
     }
 }

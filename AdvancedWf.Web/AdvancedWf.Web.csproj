@@ -1666,7 +1666,9 @@
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WorkflowTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1734,6 +1736,12 @@
     <Content Include="inspinia-admin-master\static\js\plugins\justified-gallery\README.md" />
     <Content Include="inspinia-admin-master\static\locales\en.json" />
     <Content Include="inspinia-admin-master\static\locales\es.json" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\WorkflowTypes\Index.cshtml" />
+    <Content Include="Views\WorkflowTypes\Details.cshtml" />
+    <Content Include="Views\WorkflowTypes\Create.cshtml" />
+    <Content Include="Views\WorkflowTypes\Edit.cshtml" />
+    <Content Include="Views\WorkflowTypes\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1758,9 +1766,14 @@
       <Project>{bd210642-ac0e-41f8-b954-70d52a27edeb}</Project>
       <Name>AdvancedWf.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AdvancedWf.Shared\AdvancedWf.Shared.csproj">
+      <Project>{EDD3FEAB-30CF-440F-9DE9-124F0794D43A}</Project>
+      <Name>AdvancedWf.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

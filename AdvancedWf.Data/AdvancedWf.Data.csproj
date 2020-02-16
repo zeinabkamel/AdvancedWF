@@ -150,6 +150,9 @@
     <Reference Include="Microsoft.Win32.Registry, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Registry.4.5.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -196,6 +199,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -220,9 +224,15 @@
     <Compile Include="Migrations\202002131330122_AddWorkFlowTables.Designer.cs">
       <DependentUpon>202002131330122_AddWorkFlowTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002160952059_ErrorsTblmigrations.cs" />
+    <Compile Include="Migrations\202002160952059_ErrorsTblmigrations.Designer.cs">
+      <DependentUpon>202002160952059_ErrorsTblmigrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\ErrorLogsRepository.cs" />
+    <Compile Include="Repositories\WorkflowTypesRepository.cs" />
     <Compile Include="Repositories\GadgetRepository.cs" />
     <Compile Include="AdvancedWfContext.cs" />
   </ItemGroup>
@@ -231,9 +241,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AdvancedWf.DTO\AdvancedWf.DTO.csproj">
+      <Project>{E2D06DF8-DDE2-4414-A5A8-800399559D35}</Project>
+      <Name>AdvancedWf.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AdvancedWf.Model\AdvancedWf.Model.csproj">
       <Project>{9388dc18-b02e-4ce2-8211-a958b7dd2df2}</Project>
       <Name>AdvancedWf.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvancedWf.Shared\AdvancedWf.Shared.csproj">
+      <Project>{EDD3FEAB-30CF-440F-9DE9-124F0794D43A}</Project>
+      <Name>AdvancedWf.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002131330122_AddWorkFlowTables.resx">
       <DependentUpon>202002131330122_AddWorkFlowTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002160952059_ErrorsTblmigrations.resx">
+      <DependentUpon>202002160952059_ErrorsTblmigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

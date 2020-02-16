@@ -37,9 +37,13 @@
     <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryService.cs" />
+    <Compile Include="WorkflowtypesService.cs" />
     <Compile Include="GadgetService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,6 +72,10 @@
     <ProjectReference Include="..\AdvancedWf.Model\AdvancedWf.Model.csproj">
       <Project>{9388dc18-b02e-4ce2-8211-a958b7dd2df2}</Project>
       <Name>AdvancedWf.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvancedWf.Shared\AdvancedWf.Shared.csproj">
+      <Project>{EDD3FEAB-30CF-440F-9DE9-124F0794D43A}</Project>
+      <Name>AdvancedWf.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

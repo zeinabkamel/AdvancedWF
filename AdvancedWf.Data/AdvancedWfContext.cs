@@ -1,7 +1,8 @@
 ﻿using AdvancedWf.Data.Configuration;
+using AdvancedWf.Entities.Common;
 using AdvancedWf.Model;
 using AdvancedWf.Model.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
+ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,6 +21,11 @@ namespace AdvancedWf.Data
         public DbSet<User> Users { get; set; }
         public DbSet<WorkflowTypes> WorkflowTypes { get; set; }
         public DbSet<WorkflowEngineTypes> workflowEngineTypes { get; set; }
+
+        /// <summary>
+        /// System Error Logs
+        /// </summary>
+        public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
         public static AdvancedWfContext Create()
         {
             return new AdvancedWfContext();

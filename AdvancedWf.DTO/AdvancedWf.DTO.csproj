@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +48,13 @@
     <Compile Include="GadgetFormViewModel.cs" />
     <Compile Include="GadgetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkflowTypesDTO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdvancedWf.Shared\AdvancedWf.Shared.csproj">
+      <Project>{EDD3FEAB-30CF-440F-9DE9-124F0794D43A}</Project>
+      <Name>AdvancedWf.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
