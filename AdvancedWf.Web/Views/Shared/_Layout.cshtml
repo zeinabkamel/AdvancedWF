@@ -1,43 +1,159 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewBag.Title</title>
-    <!-- Bootstrap -->
-    @Styles.Render("~/bootstrap/css")
-    <link href="~/inspinia-admin-master/static/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/inspinia-admin-master/static/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/inspinia-admin-master/static/css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
-    <link href="~/inspinia-admin-master/static/css/animate.css" rel="stylesheet" />
-    <link href="~/inspinia-admin-master/static/css/style.css" rel="stylesheet" />
- 
-</head>
-<body>
 
-    @RenderBody()
-    @Scripts.Render("~/bootstrap/js")
+<head>
+ 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>workflows  types</title>
+
+    <link href="~/inspinia-admin-master/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/inspinia-admin-master/static/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="~/inspinia-admin-master/static/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="~/inspinia-admin-master/static/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <link href="~/inspinia-admin-master/static/css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+
+    <link href="~/inspinia-admin-master/static/css/animate.css" rel="stylesheet">
+    <link href="~/inspinia-admin-master/static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="navbar-header">
+        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+        <form role="search" class="navbar-form-custom" action="search_results.html">
+            <div class="form-group">
+                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+            </div>
+        </form>
+    </div>
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">David Williams</strong>
+                                    </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="contacts.html">Contacts</a></li>
+                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+                    <li class="active">
+                        <a href="index.html">
+                            <i class="fa fa-th-large"></i>
+                            <span class="nav-label">Workflows</span> <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li class="active">
+                                <a href="@Url.Action("Index", "WorkflowTypes")"><span>WorkflowTypes</span></a>
+                                <span class="label label-primary pull-right">NEW</span>
+
+                            </li>
+                            <li><a href="~/inspinia-admin-master/static/dashboard_5.html">Dashboard v.5 <span class="label label-primary pull-right">NEW</span></a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+
+
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Advanced programs</p>
+        </footer>
+    </div>
     <!-- Mainly scripts -->
     <script src="~/inspinia-admin-master/static/js/jquery-2.1.1.js"></script>
     <script src="~/inspinia-admin-master/static/js/bootstrap.min.js"></script>
     <script src="~/inspinia-admin-master/static/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="~/inspinia-admin-master/static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="~/inspinia-admin-master/static/js/plugins/flot/jquery.flot.js"></script>
+    <script src="~/inspinia-admin-master/static/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="~/inspinia-admin-master/static/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="~/inspinia-admin-master/static/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="~/inspinia-admin-master/static/js/plugins/flot/jquery.flot.pie.js"></script>
+
+    <!-- Peity -->
+    <script src="~/inspinia-admin-master/static/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="~/inspinia-admin-master/static/js/demo/peity-demo.js"></script>
+
+
+
+    <!-- jQuery UI -->
+    <script src="~/inspinia-admin-master/static/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- GITTER -->
+    <script src="~/inspinia-admin-master/static/js/plugins/gritter/jquery.gritter.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="~/inspinia-admin-master/static/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="~/inspinia-admin-master/static/js/demo/sparkline-demo.js"></script>
+
+    <!-- ChartJS-->
+    <script src="~/inspinia-admin-master/static/js/plugins/chartJs/Chart.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="~/inspinia-admin-master/static/js/plugins/toastr/toastr.min.js"></script>
+
     <script src="~/inspinia-admin-master/static/js/plugins/jeditable/jquery.jeditable.js"></script>
     <script src="~/inspinia-admin-master/static/js/plugins/dataTables/datatables.min.js"></script>
     <!-- Custom and plugin javascript -->
     <script src="~/inspinia-admin-master/static/js/inspinia.js"></script>
     <script src="~/inspinia-admin-master/static/js/plugins/pace/pace.min.js"></script>
     @RenderSection("scripts", required: false)
-    <div class="footer">
-        <div class="pull-right">
-            10GB of <strong>250GB</strong> Free.
-        </div>
-        <div>
-            <strong>Copyright</strong> Advanced programs &copy; 2020
-        </div>
-    </div>
+
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
+
+            }, 1300);
+        });
+    </script>
 </body>
 
-
 </html>
+

@@ -21,6 +21,12 @@ namespace Store.Web.Controllers
             this.gadgetService = gadgetService;
         }
 
+
+         public PartialViewResult MainMenu()
+        {
+           
+            return PartialView("_MainMenu");
+        }
         // GET: Home
         public ActionResult Index(string category = null)
         {

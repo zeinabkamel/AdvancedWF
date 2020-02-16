@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AdvancedWf.Data.Repositories;
+using AdvancedWf.Service;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +11,37 @@ namespace AdvancedWf.Web.Controllers
 {
     public class WorkflowTypesController : BaseController
     {
+        private readonly IWorkflowtypesService _workflowtypesService;
+     
+
+        public WorkflowTypesController(IWorkflowtypesService workflowtypesService)
+        {
+            this._workflowtypesService = workflowtypesService;
+    
+        }
+
         // GET: WorkflowTypes
         public ActionResult Index()
         {
             return View();
         }
+        public string GetList()
+        {
+            try
+            {
+               
+                    var param = GetDatatableParamsFromRequest();
+                    var result = _workflowtypesService.GetList(param);
+                    return result;
 
+
+            }
+            catch (Exception e)
+            {
+                new ErrorLogsRepository().AddErrorLog(Request, null, e);
+            }
+            return string.Empty;
+        }
         // GET: WorkflowTypes/Details/5
         public ActionResult Details(int id)
         {

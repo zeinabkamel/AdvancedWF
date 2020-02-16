@@ -7,9 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AdvancedWf.Shared.Utils
-{
+{/// <summary>
+/// 
+/// </summary>
     public class DatatableConstants
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static List<DatatableField> CitiesDataTable = new List<DatatableField>
         {
             new DatatableField
@@ -24,7 +29,9 @@ namespace AdvancedWf.Shared.Utils
             },
         };
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public struct Fields
         {
             public const string Id = "Id";

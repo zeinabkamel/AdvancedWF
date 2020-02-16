@@ -1,23 +1,21 @@
-﻿ 
-
- 
-
-
-
-
-
+﻿
+@{
+    ViewData["Title"] = "workflow types";
+}
+@using AdvancedWf.Shared.Resources
+<body>
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
             <h2>Home</h2>
             <ol class="breadcrumb">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="index.html">@Messages.Home</a>
                 </li>
                 <li>
-                    <a>Workflows</a>
+                    <a>@Messages.Workflows</a>
                 </li>
                 <li class="active">
-                    <strong>Workflow types</strong>
+                    <strong>@Messages.Workflowtypes</strong>
                 </li>
             </ol>
         </div>
@@ -30,7 +28,11 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Basic Data Tables example with responsive plugin</h5>
+                        <a class="ladda-button btn btn-warning" data-style="zoom-out"
+                               href="@Url.Action("Create","WorkflowTypes")">
+                                @Messages.Create
+                            </a>
+                   
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -38,14 +40,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <i class="fa fa-wrench"></i>
                             </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li>
-                                    <a href="#">Config option 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Config option 2</a>
-                                </li>
-                            </ul>
+                       
                             <a class="close-link">
                                 <i class="fa fa-times"></i>
                             </a>
@@ -57,54 +52,14 @@
                             <table class="table table-striped table-bordered table-hover dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>@Messages.Id</th>
+                                        <th>@Messages.ArabicName</th>
+                                        <th>@Messages.EnglishName</th>
+                                        
+                                        <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr class="gradeX">
-                                        <td>Trident</td>
-                                        <td>
-                                            Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
-                                    <tr class="gradeC">
-                                        <td>Trident</td>
-                                        <td>
-                                            Internet
-                                            Explorer 5.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td class="center">5</td>
-                                        <td class="center">C</td>
-                                    </tr>
-                                    <tr class="gradeA">
-                                        <td>Trident</td>
-                                        <td>
-                                            Internet
-                                            Explorer 5.5
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td class="center">5.5</td>
-                                        <td class="center">A</td>
-                                    </tr>
-
-                                <tfoot>
-                                    <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
-                                    </tr>
-                                </tfoot>
+                                <tbody></tbody>
                             </table>
                         </div>
 
@@ -114,50 +69,71 @@
         </div>
 
     </div>
-
-
-
-
-
-
-
-
-
- 
-
- 
+</body>
 <!-- Page-Level Scripts -->
 @section Scripts {
 
     <script>
-        $(document).ready(function () {
+            $(document).ready(function(){
             $('.dataTables-example').DataTable({
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
-                    { extend: 'copy' },
-                    { extend: 'csv' },
-                    { extend: 'excel', title: 'ExampleFile' },
-                    { extend: 'pdf', title: 'ExampleFile' },
-
-                    {
-                        extend: 'print',
-                        customize: function (win) {
+                    { extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'print',
+                     customize: function (win){
                             $(win.document.body).addClass('white-bg');
                             $(win.document.body).css('font-size', '10px');
 
                             $(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
-                        }
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ],
+                            "processing": true,
+                            "responsive": true,
+                               "searching": true,
+                              "stateSave": false,
+                            "serverSide": true,
+                  "ajax": {
+                      "url": '@Url.Action("GetList", "WorkflowTypes")', 
+                      "type": 'GET'
+                      
+                },
+                columns: [
+                    { data: 'Id' },
+                    { data: 'ArbicName' },
+                    { data: 'EnglishName' },
+                ],
+                columnDefs: 
+                    [
+                    {
+                        "render": function (data, type, row)
+                        {
+                            console.log(data);
+                            console.log(type);
+                            console.log(row);
+                            result = '<div class="">';
+
+                             result += '<a class="btn btn-warning" href="@Url.Action("View")' + "/" + row['Id'] + '" title="@Messages.Details">@Messages.Details</a>';
+                             result += '<a class="btn btn-success" href="@Url.Action("Edit")' + "/" + row['Id'] + '" title= "@Messages.Edit">@Messages.Edit</a > <a class="btn btn-danger" href="@Url.Action("Delete")' + "/" + row['Id'] + '"  title= "@Messages.Delete" >@Messages.Delete</a > ';
+                             result += "</div>";
+                            return result;
+                        }, "targets":3, 
                     }
                 ]
 
             });
 
-
+   
 
 
         });
+ 
 
     </script>
+
 }
